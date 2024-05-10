@@ -41,6 +41,7 @@ exports.deleteAccount = async (req, res) => {
 		// });
 		// console.log(job);
 		const id = req.user.id;
+		console.log("deleted if->",id);
 		const user = await User.findById({ _id: id });
 		if (!user) {
 			return res.status(404).json({
@@ -87,6 +88,7 @@ exports.getAllUserDetails = async (req, res) => {
 
 exports.updateDisplayPicture = async (req, res) => {
     try {
+		console.log("file uploading stated ")
       const displayPicture = req.files.displayPicture
       const userId = req.user.id
       const image = await uploadImageToCloudinary(
@@ -110,7 +112,9 @@ exports.updateDisplayPicture = async (req, res) => {
       return res.status(500).json({
         success: false,
         message: error.message,
+		
       })
+	  console.log("cannot upload a file")
     }
 };
   

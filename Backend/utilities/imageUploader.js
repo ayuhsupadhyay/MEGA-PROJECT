@@ -10,5 +10,6 @@ exports.uploadImageToClodinary=async (file,folder,height,quality)=>{
         options.quality=quality;
     }
     options.resources_type="auto";
+    console.log("uploaded in cloudinary")
     return await cloudinary.uploader.upload(file.tempFilePath,opotions);
 }
